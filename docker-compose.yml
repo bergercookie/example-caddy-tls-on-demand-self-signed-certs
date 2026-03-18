@@ -1,0 +1,21 @@
+---
+services:
+  caddy:
+    build:
+      dockerfile: Dockerfile
+    container_name: caddy
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./conf:/etc/caddy
+      - caddy_data:/data
+      - caddy_config:/config
+    restart: unless-stopped
+
+volumes:
+  caddy_data:
+  caddy_config:

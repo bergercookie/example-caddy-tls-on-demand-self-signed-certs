@@ -1,0 +1,14 @@
+{
+	on_demand_tls {
+		ask http://127.0.0.1:9000
+	}
+}
+
+https:// {
+	log
+	respond "You reached me over https using {host}!"
+
+	tls {
+		on_demand
+		issuer internal
+	}
